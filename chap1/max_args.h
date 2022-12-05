@@ -1,3 +1,4 @@
+/** 凡是被嵌套引用的头文件，都要用 ifndef endif 包围，让编译器遇到重复定义时跳过 */
 #ifndef MAX_ARGS_H
 #define MAX_ARGS_H
 
