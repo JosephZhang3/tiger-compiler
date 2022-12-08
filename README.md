@@ -5,7 +5,7 @@
 
 编译命令，以第一章的例程为例：
 ```sh
-cd $path\tiger-compiler\chap1
+cd yourpath\tiger-compiler\chap1
 
 mingw32-make clean
 
