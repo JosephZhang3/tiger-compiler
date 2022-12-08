@@ -31,7 +31,8 @@ T_tree insert(string key, T_tree t){
                     insert(key, t->right)
         );
     }else {
-        return Tree(t->left, key, t->right);
+        // 用同样的值替换节点
+        return t;
     }
 }
 
@@ -53,9 +54,12 @@ bool member(string key, T_tree t){
 
 /**
 打印二叉树
-树的一般表示是一颗“倒立的”真实的树，打印时要把它放倒，根朝向左侧
+想象成一颗“倒立的”真实的树，打印时要把它水平放倒，根朝向左边
 TODO 按照中序遍历序列的相反次序进行打印
 字母前的每个空格打印为“-----”，即连续5个'-'
+
+因为下面程序的打印顺序 t->right t->key t->left
+所以会针对一颗“倒立的”树从右到左进行“扫描”。可以试着调转print顺序，然后观察控制台输出
 */
 void printTreeBranch(T_tree t, int layer){
     if(t->right){
@@ -66,7 +70,7 @@ void printTreeBranch(T_tree t, int layer){
 	for(int i=1;i<layer;i++){
 	   printf("-----");
     }
-	   printf("%s\n",t->key);
+	printf("%s\n",t->key);// 递归终点，不再继续调用自身
 
 	if(t->left){
 	   printTreeBranch(t->left,layer+1);

@@ -1,17 +1,28 @@
-all : test_persistentFBST main
+all : test_FBBST test_persistentFBST main
 .PHONY : clean
+
+test_FBBST : test_FBBST.o FBBST.o util.o
+	gcc -o test_FBBST -g test_FBBST.o FBBST.o util.o
+
+test_FBBST.o : test_FBBST.c FBBST.h util.h
+	gcc -g -c test_FBBST.c
+
+FBBST.o : FBBST.c FBBST.h util.h
+	gcc -g -c FBBST.c
+
 
 test_persistentFBST : test_persistentFBST.o persistentFBST.o util.o
 	gcc -o test_persistentFBST -g test_persistentFBST.o persistentFBST.o util.o
-
-main : main.o max_args.o prog1.o slp.o util.o
-	gcc -o main -g main.o max_args.o prog1.o slp.o util.o
 
 test_persistentFBST.o : test_persistentFBST.c persistentFBST.h util.h
 	gcc -g -c test_persistentFBST.c
 
 persistentFBST.o : persistentFBST.c persistentFBST.h
 	gcc -g -c persistentFBST.c
+
+
+main : main.o max_args.o prog1.o slp.o util.o
+	gcc -o main -g main.o max_args.o prog1.o slp.o util.o
 
 main.o : main.c max_args.h prog1.h
 	gcc -g -c main.c

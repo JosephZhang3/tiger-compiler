@@ -9,7 +9,6 @@ struct tree {
     string key;// 分叉节点
     T_tree right;// 右子树
 };
-
 T_tree Tree(T_tree l, string key, T_tree r);
 
 T_tree insert(string key, T_tree t);
