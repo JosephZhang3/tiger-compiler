@@ -3,7 +3,10 @@
 functional balanced binary search tree
 函数式平衡二叉搜索树，插入时而不是查找时保持树的平衡
 
-TODO 如果输入是乱序的序列，可以保持平衡，但是如果是顺序的，比如从 a 到 z ，最后形成的树就退化成了链表。问题出在哪?
+TODO 如果输入是乱序的序列，可以保持平衡，但是如果是顺序的，比如从 a 到 z ，一开始形成的树就退化成了链表。问题出在哪?
+可能原因：
+1. tree结构体记录的是树高度，不是平衡因子
+2. 超出限度的判定或者处理函数有错误
 
 reference: https://blog.csdn.net/Yusamm/article/details/105720509
 */
