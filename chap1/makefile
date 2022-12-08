@@ -1,14 +1,14 @@
-all : test_FBBST test_persistentFBST main
+all : test_AVL_FBBST test_persistentFBST main
 .PHONY : clean
 
-test_FBBST : test_FBBST.o FBBST.o util.o
-	gcc -o test_FBBST -g test_FBBST.o FBBST.o util.o
+test_AVL_FBBST : test_AVL_FBBST.o AVL_FBBST.o util.o
+	gcc -o test_AVL_FBBST -g test_AVL_FBBST.o AVL_FBBST.o util.o
 
-test_FBBST.o : test_FBBST.c FBBST.h util.h
-	gcc -g -c test_FBBST.c
+test_AVL_FBBST.o : test_AVL_FBBST.c AVL_FBBST.h util.h
+	gcc -g -c test_AVL_FBBST.c
 
-FBBST.o : FBBST.c FBBST.h util.h
-	gcc -g -c FBBST.c
+AVL_FBBST.o : AVL_FBBST.c AVL_FBBST.h util.h
+	gcc -g -c AVL_FBBST.c
 
 
 test_persistentFBST : test_persistentFBST.o persistentFBST.o util.o
