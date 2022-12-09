@@ -3,7 +3,7 @@
 functional balanced binary search tree
 函数式平衡二叉搜索树，插入时而不是查找时保持树的平衡
 
-TODO 如果输入是乱序的序列，可以保持平衡，但是如果是顺序的，比如从 a 到 z ，一开始形成的树就退化成了链表。问题出在哪?
+TODO FIXME 如果输入是乱序的序列，可以保持平衡，但是如果是顺序的，比如从 a 到 z ，一开始形成的树就退化成了链表。问题出在哪?
 可能原因：
 1. tree结构体记录的是树高度，不是平衡因子
 2. 超出限度的判定或者处理函数有错误
@@ -12,7 +12,7 @@ reference: https://blog.csdn.net/Yusamm/article/details/105720509
 */
 #include "AVL_FBBST.h"
 #include "stdlib.h"
-
+int count = 0;
 #define NEED_REBALANCE_HEIGHT 2
 
 /** 从控制台的输出构造一棵平衡二叉树 N为节点数量 */
@@ -41,7 +41,7 @@ void freeTree(AVLTree t)
     free(t);
 }
 
-int max(int a, int b)
+int get_max(int a, int b)
 {
     if (a > b)
     {
@@ -59,7 +59,6 @@ int get_height(AVLTree t)
     return t->height;
 }
 
-int count = 0;
 void printIndent(int n)
 {
     for (int i = 0; i < n; i++)
@@ -119,7 +118,7 @@ AVLTree AVLInsert(AVLTree t, string key)
         {
         }
     }
-    t->height = max(get_height(t->left), get_height(t->right)) + 1;
+    t->height = get_max(get_height(t->left), get_height(t->right)) + 1;
     printIndent(--count);
     printf(" return [t key %s height %d]\n\n\n", t->key, t->height);
     return t;
@@ -135,8 +134,8 @@ AVLTree left_rotate(AVLTree t)
     b->right = t;
 
     // 更新 t b 的树高
-    t->height = max(get_height(t->left), get_height(t->right));
-    b->height = max(get_height(b->left), get_height(b->right));
+    t->height = get_max(get_height(t->left), get_height(t->right));
+    b->height = get_max(get_height(b->left), get_height(b->right));
     return b; // b 取代原先 t 的位置
 }
 
@@ -150,8 +149,8 @@ AVLTree right_rotate(AVLTree t)
     b->left = t;
 
     // 更新 t b 的树高
-    t->height = max(get_height(t->left), get_height(t->right));
-    b->height = max(get_height(b->left), get_height(b->right));
+    t->height = get_max(get_height(t->left), get_height(t->right));
+    b->height = get_max(get_height(b->left), get_height(b->right));
     return b; // b 取代原先 t 的位置
 }
 

@@ -16,7 +16,7 @@ IntAndTable_ intAndTable(int i, Table_ t){
     return it;
 }
 
-/** 解释直线式程序（函数式写法） */
+/** 解释直线式程序（函数式写法），声明局部变量的同时对它进行初始化 */
 void interp(A_stm s){
     
 }
