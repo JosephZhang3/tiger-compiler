@@ -37,7 +37,7 @@ struct A_exp_ {
            string id;
            int num;
            struct {A_exp left; A_binop oper; A_exp right;} op; // 操作符表达式的结构定义，引用了其它结构定义如 A_binop ，包括自身： A_exp
-           struct {A_stm stm; A_exp exp;} eseq; // 表达式序列，组成一条语句，里面可以再嵌套语句，语句里再嵌套表达式... 如 print(a - 1, b - 2, c - 3)，其中 a - 1, b - 2, c - 3 就是一个表达式序列
+           struct {A_stm stm; A_exp exp;} eseq; // 表达式序列，组成一条语句，序列中每个部分平行对等。如 a := ((print(b - 1)), 3)，赋值的等号右边由一个print语句和一个num表达式组成
           } u;
 };
 A_exp A_IdExp(string id);
@@ -48,7 +48,7 @@ A_exp A_EseqExp(A_stm stm, A_exp exp);
 /** 
 expression list(not expression sequence !) data structure 
 注意这是一个链表结构
-TODO 为什么这么定义？
+里面可以再嵌套表达式，嵌套的表达式里再嵌套表达式
 */
 struct A_expList_ {
     enum {A_pairExpList, A_lastExpList} kind;

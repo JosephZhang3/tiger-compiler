@@ -10,7 +10,7 @@ struct table {
     int value;
     Table_ tail;
 };
-Table_ Table(string id, int value, struct table *tail);
+Table_ Table(string id, int value, Table_ tail);
 
 int maxargs(A_stm s);
 

@@ -1,3 +1,5 @@
+# 注意 gcc 命令前一定要用tab，而不是4个空格
+
 # define program executions
 all : test_AVL_FBBST test_persistentFBST_bind test_persistentFBST main
 .PHONY : clean
@@ -33,13 +35,16 @@ persistentFBST.o : persistentFBST.c persistentFBST.h
 	gcc -g -c persistentFBST.c
 
 # main
-main : main.o max_args.o prog1.o slp.o util.o
-	gcc -o main -g main.o max_args.o prog1.o slp.o util.o
+main : main.o interp.o max_args.o prog1.o slp.o util.o
+	gcc -o main -g main.o interp.o max_args.o prog1.o slp.o util.o
 
-main.o : main.c max_args.h prog1.h
+main.o : main.c interp.h max_args.h prog1.h
 	gcc -g -c main.c
 
-max_args.o : max_args.c slp.h
+interp.o : interp.c interp.h max_args.h
+	gcc -g -c interp.c
+
+max_args.o : max_args.c max_args.h slp.h
 	gcc -g -c max_args.c
 
 prog1.o : prog1.c slp.h

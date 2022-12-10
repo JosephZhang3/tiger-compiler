@@ -15,7 +15,7 @@ struct TreeNode
     AVLTree left;  // 左子树
     string key;    // 分叉节点
     AVLTree right; // 右子树
-    int height;    // 平衡因子 balance factor
+    int height;    // 平衡因子 balance factor 即左右子树高度之差
 };
 
 AVLTree left_rotate(AVLTree t);

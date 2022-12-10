@@ -4,6 +4,15 @@
 思路：由于有嵌套，肯定要使用递归，每找到一个print语句，就拿它的参数个数
 跟暂存的max值做比较
 */
+
+Table_ Table(string id, int value, Table_ tail){
+    Table_ t = checked_malloc(sizeof(*t));
+    t->id = id;
+    t->value = value;
+    t->tail = tail;
+    return t;
+}
+
 int max(int a, int b){
     return (a > b) ? a:b;
 }
